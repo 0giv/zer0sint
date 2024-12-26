@@ -14,6 +14,8 @@ Zer0sint is an open-source intelligence (OSINT) project designed to empower rese
 This project or its maintainers are not responsible for any content found within the referenced data leak. The data is solely used for research and educational purposes, and any misuse of the information is strictly discouraged and disclaimed.
 
 ---
+## Alternative Usage
+If you do not wish to go through the installation process, you can use the pre-installed version. Simply visit [zer0sint.com](https://zer0sint.com) to access the tools directly.
 
 ## Installation Guide
 
