@@ -30,7 +30,7 @@ def main(value):
         for row in filtered_rows:
             return format_data(row)
     else:
-        return f"{field} = {value} No Data Found"
+        return f"{value} No Data Found"
 
 
 def format_data(data):
