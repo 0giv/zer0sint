@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who Are We? - ZEROSINT</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='images/eye.svg') }}" alt="Zerosint Logo">
+                <span>ZEROSINT</span>
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="{{ url_for('faq') }}" class="nav-link">FAQ</a>
+            <a href="{{ url_for('about') }}" class="nav-link active">Who Are We?</a>
+        </div>
+    </nav>
+
+    <main class="content-page">
+        <div class="container">
+            <h1>Who Are We?</h1>
+            
+            <div class="about-section">
+                <div class="about-content">
+                    <h2>Our Mission</h2>
+                    <p>ZEROSINT is dedicated to providing powerful, accessible tools for open-source intelligence gathering. We believe in making information accessible while promoting responsible use of OSINT tools.</p>
+
+                    <h2>Our Platform</h2>
+                    <p>Our platform combines multiple specialized tools for comprehensive information gathering:</p>
+                    <ul>
+                        <li>Domain & Network Analysis</li>
+                        <li>Security Threat Detection</li>
+                        <li>Digital Identity Research</li>
+                        <li>Cybersecurity Investigation</li>
+                    </ul>
+
+                    <h2>Our Commitment</h2>
+                    <p>We are committed to:</p>
+                    <ul>
+                        <li>Providing accurate and reliable information</li>
+                        <li>Maintaining user privacy and data security</li>
+                        <li>Continuous improvement of our tools</li>
+                        <li>Supporting the OSINT community</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

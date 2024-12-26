@@ -1,0 +1,7 @@
+python-whois
+flask
+beautifulsoup4
+regex
+requests
+ipwhois
+python-dotenv

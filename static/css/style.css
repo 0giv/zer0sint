@@ -1,0 +1,207 @@
+:root {
+    --primary-red: #ff3b3b;
+    --background-dark: #0a0a0a;
+    --text-light: #e0e0e0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--background-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: var(--text-light);
+}
+
+.logo img {
+    height: 24px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-link {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 59, 59, 0.1);
+}
+
+.nav-link.active {
+    background-color: var(--primary-red);
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    text-align: center;
+    padding: 2rem;
+}
+
+.logo-large {
+    margin-bottom: 1rem;
+}
+
+.logo-large img {
+    height: 80px;
+    margin-bottom: 1rem;
+}
+
+.logo-large h1 {
+    font-size: 3rem;
+    margin: 0;
+    color: var(--primary-red);
+}
+
+.subtitle {
+    color: #666;
+    margin-bottom: 3rem;
+}
+
+.search-container {
+    width: 100%;
+    max-width: 600px;
+}
+
+.search-tool {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    color: var(--text-light);
+    border-radius: 4px;
+}
+
+.search-form {
+    display: flex;
+    gap: 0.5rem;
+}
+
+#searchQuery {
+    flex: 1;
+    padding: 0.8rem;
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    color: var(--text-light);
+    border-radius: 4px;
+}
+
+.search-button {
+    background-color: var(--primary-red);
+    color: white;
+    border: none;
+    padding: 0 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.results-container {
+    margin-top: 20px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+}
+
+
+/* Content Pages Styles */
+.content-page {
+    padding: 4rem 2rem;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.container h1 {
+    color: var(--primary-red);
+    margin-bottom: 2rem;
+}
+
+/* FAQ Page Styles */
+.faq-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.faq-item {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.faq-item h3 {
+    color: var(--primary-red);
+    margin-top: 0;
+}
+
+/* About Page Styles */
+.about-section {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+.about-content h2 {
+    color: var(--primary-red);
+    margin-top: 2rem;
+}
+
+.about-content h2:first-child {
+    margin-top: 0;
+}
+
+.about-content ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.about-content ul li {
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.about-content ul li:before {
+    content: "•";
+    color: var(--primary-red);
+    position: absolute;
+    left: 0;
+}

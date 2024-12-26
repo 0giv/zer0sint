@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - ZEROSINT</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='images/eye.svg') }}" alt="Zerosint Logo">
+                <span>ZEROSINT</span>
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="{{ url_for('faq') }}" class="nav-link active">FAQ</a>
+            <a href="{{ url_for('about') }}" class="nav-link">Who Are We?</a>
+        </div>
+    </nav>
+
+    <main class="content-page">
+        <div class="container">
+            <h1>Frequently Asked Questions</h1>
+            
+            <div class="faq-section">
+                <div class="faq-item">
+                    <h3>What is ZEROSINT?</h3>
+                    <p>ZEROSINT is an advanced open-source intelligence platform that provides various tools for information gathering and analysis.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>What tools are available?</h3>
+                    <p>We offer multiple tools including WHOIS lookup, DNS lookup, IP analysis, scam checking, Discord ID lookup, email search, username checking, and more.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>How accurate are the results?</h3>
+                    <p>Our tools gather information from reliable sources and databases, providing accurate and up-to-date results. However, the accuracy may vary depending on the availability and freshness of data sources.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Is it legal to use ZEROSINT?</h3>
+                    <p>ZEROSINT is designed for legitimate information gathering purposes. Users must comply with applicable laws and regulations when using our tools.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>How do I use the platform?</h3>
+                    <p>Simply select the desired tool from the dropdown menu on the homepage, enter your search query, and click the search button to get results.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zer0sint - Arama Sonucu</title>
+    <link rel="stylesheet" href="static/css/index.css"> <!-- index.css'i dahil et -->
+</head>
+<body>
+    <style>
+                .button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(90deg, #ff5252, #ff1744);
+            color: #ffffff;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s;
+        }
+
+        .button:hover {
+            background: linear-gradient(90deg, #ff1744, #ff5252);
+            transform: scale(1.03);
+        }
+
+        .button:focus {
+            outline: none;
+            box-shadow: 0 0 8px rgba(255, 82, 82, 0.5);
+        }
+    </style>
+     <nav>
+        <div class="logo">
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='images/eye.svg') }}" alt="Zerosint Logo">
+                <span>ZEROSINT</span>
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="{{ url_for('faq') }}" class="nav-link">FAQ</a>
+            <a href="{{ url_for('about') }}" class="nav-link">Who Are We?</a>
+        </div>
+    </nav>
+    <div class="hero">
+        <div class="container">
+            <div class="title">Search Response</div>
+            <div class="result-box">
+                <!-- Flask ile gönderilen arama sonucunu burada görüntüle -->
+                <p>{{ response1 }}</p>
+            </div>
+            <button onclick="window.location.href = '/';" class="button">Go Back</button>
+        </div>
+    </div>
+</body>
+</html>

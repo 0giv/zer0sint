@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZEROSINT - Intelligence Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='images/eye.svg') }}" alt="Zerosint Logo">
+            <span>ZEROSINT</span>
+        </div>
+        <div class="nav-links">
+            <a href="{{ url_for('faq') }}" class="nav-link">FAQ</a>
+            <a href="{{ url_for('about') }}" class="nav-link">Who Are We?</a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="hero">
+            <div class="logo-large">
+                <img src="{{ url_for('static', filename='images/eye.svg') }}" alt="Zerosint Large Logo">
+                <h1>ZEROSINT</h1>
+            </div>
+            <p class="subtitle">Advanced Open Source Intelligence Platform</p>
+            
+            <div class="search-container">
+                <select id="searchTool" class="search-tool">
+                    <option value="whois">WHOIS Lookup</option>
+                    <option value="dns">DNS Lookup</option>
+                    <option value="ip">IP Lookup</option>
+                    <option value="scam">Scam Report</option>
+                    <option value="discord">Discord ID</option>
+                    <option value="discordbot">Discord Bot ID</option>
+                    <option value="email">Email Leaked?</option>
+                    <option value="ransom">Ransom Report</option>
+                    <option value="creditcard">Creditcards.com Leakdata Lookup</option>
+                </select>
+                <form id="searchForm" class="search-form">
+                    <input type="text" id="searchQuery" placeholder="Enter your search query...">
+                    <button type="submit" class="search-button">Search</button>
+                </form>
+            </div>
+
+        </div>
+    </main>
+    <script>
+        document.getElementById("searchForm").addEventListener("submit", function(event) {
+            event.preventDefault();  
+
+            var searchQuery = document.getElementById("searchQuery").value;
+            var searchTool = document.getElementById("searchTool").value;
+
+            
+            var data = {
+                query: searchQuery,
+                tool: searchTool
+            };
+
+            // Send the POST request with the JSON data
+            fetch('/search', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.text())  // Parse the response as text (HTML)
+            .then(html => {
+                // Update the page with the response
+                document.body.innerHTML = html;
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
