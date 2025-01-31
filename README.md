@@ -51,7 +51,7 @@ Follow the steps below to install and set up Zer0sint:
    ```bash
    python app.py
    ```
-   Access the web interface at `http://localhost:5000`.
+   Access the web interface at `http://localhost:80`.
 
 ---
 
