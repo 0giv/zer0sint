@@ -10,6 +10,7 @@ from modules.websites.Ransom import ransomlookup
 from modules.creditcardscom import creditcards
 from modules.people.username import checker
 from modules.people.DiscordId import discordid_lookupBot
+from modules.websites.hudsonrock import hudsonrock
 load_dotenv()
 
 app = Flask(__name__)
@@ -26,6 +27,9 @@ def faq():
 def about():
     return render_template('about.html')
 
+@app.route('/usage')
+def usage():
+    return render_template('usage.html')
 
 @app.route('/search', methods=['POST'])
 def search():
@@ -33,32 +37,38 @@ def search():
     query = data.get('query', '')  # Get the search query
     tool = data.get('tool', '').lower()  # Get the selected tool
 
-    results = []
+    results = "Error fetching data" 
 
-    # Route the search to the appropriate tool based on selection
-    if tool == 'whois':
-        results = my_whois.main_whois(query)
-    elif tool == 'dns':
-        results = dnslookup.nslookup(query)
-    elif tool == 'ip':
-        results = iplookup_clean_list.ip_whois(query)
-    elif tool == 'scam':
-        results = scammerdb_web.scammerdb(query)
-    elif tool == 'discord':
-        results = discordid_lookup.findthem(query)
-    elif tool == 'discordbot':
-        results = discordid_lookupBot.findthem(query)
-    elif tool == 'email':
-        results = email_lookup.findemail(query)
-    elif tool == 'username':
-        results = checker.main(query)
-    elif tool == 'ransom':
-        results = ransomlookup.ransomlookup(query)
-    elif tool == 'creditcard':
-        results = creditcards.main(query)
+    try:
+        # Route the search to the appropriate tool based on selection
+        if tool == 'whois':
+            results = my_whois.main_whois(query)
+        elif tool == 'dns':
+            results = dnslookup.nslookup(query)
+        elif tool == 'ip':
+            results = iplookup_clean_list.ip_whois(query)
+        elif tool == 'scam':
+            results = scammerdb_web.scammerdb(query)
+        elif tool == 'discord':
+            results = discordid_lookup.findthem(query)
+        elif tool == 'discordbot':
+            results = discordid_lookupBot.findthem(query)
+        elif tool == 'email':
+            results = email_lookup.findemail(query)
+        elif tool == 'username':
+            results = checker.main(query)
+        elif tool == 'ransom':
+            results = ransomlookup.ransomlookup(query)
+        elif tool == 'creditcard':
+            results = creditcards.main(query)
+        elif tool == 'hudsonrock':
+            results = hudsonrock.hudsonrock(query)
+    except Exception as e:
+        results = f"Error: {str(e)}" 
 
     # Render the response in response.html with the results
     return render_template('response.html', response1=results)
 
+
 if __name__ == '__main__':
-    app.run(port=80)
+    app.run(debug=True,port=80) 

@@ -78,7 +78,10 @@ def display_results(results):
 
 
 def main(username):
-    username_to_check = username
-    results = check_username(username_to_check)
-    display_results(results)
+    try:
+        username_to_check = username
+        results = check_username(username_to_check)
+        display_results(results)
+    except Exception as e:
+        print(f"An error occurred: {e}")
 

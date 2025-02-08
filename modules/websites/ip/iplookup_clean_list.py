@@ -8,9 +8,8 @@ network_remarks_results = []
 basic_result = []
 network_result = []
 
-def get_info(address):# get info about an ip address and return it
+def get_info(address):
     
-    # print("="*27,"\nBASIC INFO:\n"+"="*27+"\n")
     firstscan = whois(address)
     result = firstscan.lookup_rdap()
 
@@ -66,13 +65,14 @@ def get_info(address):# get info about an ip address and return it
     return basic_result, network_result 
 
 def ip_whois(ip_address): ##START FUNCTION
+    try:
+        basicinfo, networkinfo = get_info(ip_address)
+        data_info, data_info_network = json.dumps(basicinfo), json.dumps(networkinfo) 
 
-    basicinfo, networkinfo = get_info(ip_address)
-    data_info, data_info_network = json.dumps(basicinfo), json.dumps(networkinfo) 
+        data_result = data_info.replace("[", "").replace("]", '\n').replace(",", "").replace('"', "")
+        network_result = data_info_network.replace("[", "").replace("]", '\n').replace(",", "").replace('"', "")
 
-    data_result = data_info.replace("[", "").replace("]", '\n').replace(",", "").replace('"', "")
-    network_result = data_info_network.replace("[", "").replace("]", '\n').replace(",", "").replace('"', "")
-
-    return data_result, network_result #the first is basic infos about the ip address, the second, the network infos about it.
-
+        return data_result, network_result #the first is basic infos about the ip address, the second, the network infos about it.
+    except Exception as e:
+        return "Invalid IP Address or Error: "+str(e)
 #cleaned_list = [re.sub(r'[,"\\:\[\]]', '', item) for item in b]

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usage Guide</title>
+    <link rel="stylesheet" href="/static/css/style.css"> 
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='images/eye.svg') }}" alt="Zerosint Logo">
+                <span>ZEROSINT</span>
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="{{ url_for('faq') }}" class="nav-link">FAQ</a>
+            <a href="{{ url_for('about') }}" class="nav-link">Who Are We?</a>
+            <a href="{{ url_for('usage') }}" class="nav-link active">Usage Guide</a>
+        </div>
+    </nav>
+
+    <!-- === Usage Page Content === -->
+    <div class="content-page">
+        <div class="container">
+            <h1>🔍 Usage Guide</h1>
+
+            <div class="faq-section">
+                <div class="faq-item">
+                    <h3>WHOIS Lookup</h3>
+                    <p>Find domain registration details.</p>
+                    <strong>Example Input:</strong> example.com  
+                </div>
+
+                <div class="faq-item">
+                    <h3>DNS Lookup</h3>
+                    <p>Retrieve DNS records (A, MX, CNAME, TXT).</p>
+                    <strong>Example Input:</strong> example.com  
+
+                </div>
+
+                <div class="faq-item">
+                    <h3>IP Lookup</h3>
+                    <p>Find details about an IP address.</p>
+                    <strong>Example Input:</strong> 8.8.8.8  
+
+                </div>
+
+                <div class="faq-item">
+                    <h3>Scam Report</h3>
+                    <p>Check if a website or email is linked to scams.</p>
+                    <strong>Example Input:</strong> URL, email, or phone number  
+ 
+                </div>
+
+                <div class="faq-item">
+                    <h3>Discord ID Lookup</h3>
+                    <p>Get information about a Discord user.</p>
+                    <strong>Example Input:</strong> Discord User ID
+                </div>
+
+                <div class="faq-item">
+                    <h3>Discord Bot ID Lookup</h3>
+                    <p>Retrieve details about a Discord bot.</p>
+                    <strong>Example Input:</strong> Bot ID  
+
+                </div>
+
+                <div class="faq-item">
+                    <h3>Email Leak Check</h3>
+                    <p>Check if an email has been exposed in data breaches.</p>
+                    <strong>Example Input:</strong> Email address
+                    </pre>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Ransom Report</h3>
+                    <p>Scan databases for ransomware attacks.</p>
+                    <strong>Example Input:</strong> Domain 
+
+                </div>
+
+                <div class="faq-item">
+                    <h3>Hudson Rock Data Breach Check</h3>
+                    <p>Verify if your personal data has been compromised with Grabber,Stealer or etc...</p>
+                    <strong>Example Input:</strong> PC Username
+                </div>
+
+                <div class="faq-item">
+                    <h3>Credit Card Leak Lookup</h3>
+                    <p>Search for creditcards.com data leaks.</p>
+                    <strong>Example Input:</strong> Name 
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

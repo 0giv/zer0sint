@@ -9,12 +9,15 @@
 <body>
     <nav>
         <div class="logo">
+            <a href="{{ url_for('home') }}">
             <img src="{{ url_for('static', filename='images/eye.svg') }}" alt="Zerosint Logo">
             <span>ZEROSINT</span>
+        </a>
         </div>
         <div class="nav-links">
             <a href="{{ url_for('faq') }}" class="nav-link">FAQ</a>
             <a href="{{ url_for('about') }}" class="nav-link">Who Are We?</a>
+            <a href="{{ url_for('usage') }}" class="nav-link">Usage Guide</a>
         </div>
     </nav>
 
@@ -36,6 +39,7 @@
                     <option value="discordbot">Discord Bot ID</option>
                     <option value="email">Email Leaked?</option>
                     <option value="ransom">Ransom Report</option>
+                    <option value="hudsonrock">Is Your Info Stealed?</option>
                     <option value="creditcard">Creditcards.com Leakdata Lookup</option>
                 </select>
                 <form id="searchForm" class="search-form">

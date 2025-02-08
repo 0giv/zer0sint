@@ -4,11 +4,12 @@ from time import sleep
 import re
 
 def nslookup(domain):
-    url = "https://networkcalc.com/api/dns/lookup/"
-    complete_url = url + domain
-    request = requests.get(complete_url)
-    
+
     try:
+        url = "https://networkcalc.com/api/dns/lookup/"
+        complete_url = url + domain
+        request = requests.get(complete_url)
+        
         data = json.loads(request.text)
         cleaned_json = re.sub(r'[\"\'\,\[\]\{\}]', '', json.dumps(data, indent=2))
 
