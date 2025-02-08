@@ -5,3 +5,4 @@ regex
 requests
 ipwhois
 python-dotenv
+gunicorn
