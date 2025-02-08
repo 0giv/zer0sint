@@ -60,7 +60,7 @@ Follow the steps below to install and set up Zer0sint:
 Zer0sint was founded by a group of cybersecurity enthusiasts passionate about OSINT and data analytics. Our mission is to provide the community with accessible, reliable, and ethical OSINT tools. We believe in transparency and collaboration to advance the field of open-source intelligence.
 
 ### Contact
-- **Website**: [zer0sint.com](https://zer0sint.com)
+- **Website**: [zer0sint.com](https://zer0sint.onrender.com/)
 - **Email**: zer0sint@proton.me
 - **GitHub**: [github.com/0giv](https://github.com/0giv)
 
