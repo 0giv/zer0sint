@@ -1,74 +1,100 @@
 from flask import Flask, render_template, request, jsonify
 from dotenv import load_dotenv
-from modules.websites.DNS import dnslookup
-from modules.websites.ip import iplookup_clean_list
+import ast
 from modules.websites.scam import scammerdb_web
-from modules.websites.Whois import my_whois
-from modules.people.DiscordId import discordid_lookup
 from modules.people.Email import email_lookup
 from modules.websites.Ransom import ransomlookup
 from modules.creditcardscom import creditcards
-from modules.people.username import checker
-from modules.people.DiscordId import discordid_lookupBot
 from modules.websites.hudsonrock import hudsonrock
+
 load_dotenv()
 
 app = Flask(__name__)
 
-@app.route('/')
+
+@app.route("/")
 def home():
-    return render_template('index.html')
+    return render_template("index.html")
 
-@app.route('/faq')
+
+@app.route("/faq")
 def faq():
-    return render_template('faq.html')
+    return render_template("faq.html")
 
-@app.route('/about')
+
+@app.route("/about")
 def about():
-    return render_template('about.html')
+    return render_template("about.html")
 
-@app.route('/usage')
+
+@app.route("/usage")
 def usage():
-    return render_template('usage.html')
+    return render_template("usage.html")
 
-@app.route('/search', methods=['POST'])
+
+@app.route("/search", methods=["POST"])
 def search():
-    data = request.get_json()  # Parse the JSON request
-    query = data.get('query', '')  # Get the search query
-    tool = data.get('tool', '').lower()  # Get the selected tool
+    data = request.get_json()
+    query = data.get("query", "")
+    tool = data.get("tool", "").lower()
 
-    results = "Error fetching data" 
+    results = "Error fetching data"
 
     try:
-        # Route the search to the appropriate tool based on selection
-        if tool == 'whois':
-            results = my_whois.main_whois(query)
-        elif tool == 'dns':
-            results = dnslookup.nslookup(query)
-        elif tool == 'ip':
-            results = iplookup_clean_list.ip_whois(query)
-        elif tool == 'scam':
+        if tool == "scam":
             results = scammerdb_web.scammerdb(query)
-        elif tool == 'discord':
-            results = discordid_lookup.findthem(query)
-        elif tool == 'discordbot':
-            results = discordid_lookupBot.findthem(query)
-        elif tool == 'email':
+        elif tool == "email":
             results = email_lookup.findemail(query)
-        elif tool == 'username':
-            results = checker.main(query)
-        elif tool == 'ransom':
+
+            if isinstance(results, str):
+                try:
+                    results = ast.literal_eval(results)
+                except:
+                    pass
+
+            if isinstance(results, list) and isinstance(results[0], dict):
+                cleaned_results = []
+                for item in results:
+                    leaked_sites = item.get("leaked_site", "").strip().split("\n")
+                    cleaned_results.extend(
+                        [site.strip() for site in leaked_sites if site.strip()]
+                    )
+                results = cleaned_results
+
+        elif tool == "ransom":
             results = ransomlookup.ransomlookup(query)
-        elif tool == 'creditcard':
+        elif tool == "creditcard":
             results = creditcards.main(query)
-        elif tool == 'hudsonrock':
+            if isinstance(results, str):
+                parsed_results = {}
+                lines = results.split(" ")
+                current_key = None
+                current_value = []
+
+                for item in lines:
+                    if ":" in item:
+                        if current_key:
+                            parsed_results[current_key] = " ".join(current_value)
+                        key_value = item.split(":", 1)
+                        current_key = key_value[0].strip()
+                        current_value = (
+                            [key_value[1].strip()] if len(key_value) > 1 else []
+                        )
+                    else:
+                        current_value.append(item.strip())
+
+                if current_key:
+                    parsed_results[current_key] = " ".join(current_value)
+
+                results = parsed_results
+        elif tool == "hudsonrock":
             results = hudsonrock.hudsonrock(query)
+
     except Exception as e:
-        results = f"Error: {str(e)}" 
+        results = [f"Error: {str(e)}"]
 
-    # Render the response in response.html with the results
-    return render_template('response.html', response1=results)
+    return render_template("response.html", response1=results, tool=tool)
 
 
-if __name__ == '__main__':
-    app.run(debug=True,port=80) 
+if __name__ == "__main__":
+    app.run(debug=True, port=80)

@@ -4,13 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zer0sint - Arama Sonucu</title>
-    <link rel="stylesheet" href="static/css/index.css"> <!-- index.css'i dahil et -->
-</head>
-<body>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
     <style>
-                .button {
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .container {
+            margin: 50px auto;
+            margin-top: 10%;
+            width: 80%;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        table {
             width: 100%;
-            padding: 14px;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #ff5252;
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        tr:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 14px 28px;
             border: none;
             border-radius: 8px;
             background: linear-gradient(90deg, #ff5252, #ff1744);
@@ -19,19 +70,17 @@
             font-weight: bold;
             cursor: pointer;
             transition: background 0.3s ease, transform 0.2s;
+            text-decoration: none;
         }
 
         .button:hover {
             background: linear-gradient(90deg, #ff1744, #ff5252);
-            transform: scale(1.03);
-        }
-
-        .button:focus {
-            outline: none;
-            box-shadow: 0 0 8px rgba(255, 82, 82, 0.5);
+            transform: scale(1.05);
         }
     </style>
-     <nav>
+</head>
+<body>
+    <nav>
         <div class="logo">
             <a href="{{ url_for('home') }}">
                 <img src="{{ url_for('static', filename='images/eye.svg') }}" alt="Zerosint Logo">
@@ -41,17 +90,70 @@
         <div class="nav-links">
             <a href="{{ url_for('faq') }}" class="nav-link">FAQ</a>
             <a href="{{ url_for('about') }}" class="nav-link">Who Are We?</a>
+            <a href="{{ url_for('usage') }}" class="nav-link">Usage Guide</a>
         </div>
     </nav>
-    <div class="hero">
-        <div class="container">
-            <div class="title">Search Response</div>
-            <div class="result-box">
-                <!-- Flask ile gönderilen arama sonucunu burada görüntüle -->
-                <p>{{ response1 }}</p>
-            </div>
-            <button onclick="window.location.href = '/';" class="button">Go Back</button>
-        </div>
+
+    <div class="container">
+        <div class="title">Search Results</div>
+
+        {% if response1 and response1 != "Error fetching data" and response1 != "[]" %}
+            
+            {% if tool == 'email' %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Leaked Websites</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for site in response1 %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ site }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% elif tool == "creditcard" %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for key, value in response1.items() %}
+                        <tr>
+                            <td><strong>{{ key }}</strong></td>
+                            <td>{{ value }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Leaked Site / Data</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr>
+                            <td> <i>{{ response1 }} </i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            {% endif %}
+
+        {% else %}
+            <p>No data found or an error occurred.</p>
+        {% endif %}
+
+        <a href="/" class="button">Go Back</a>
     </div>
 </body>
 </html>
