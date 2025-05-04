@@ -6,7 +6,7 @@ from modules.people.Email import email_lookup
 from modules.websites.Ransom import ransomlookup
 from modules.creditcardscom import creditcards
 from modules.websites.hudsonrock import hudsonrock
-
+from modules.colicom import colicom
 load_dotenv()
 
 app = Flask(__name__)
@@ -87,6 +87,9 @@ def search():
                     parsed_results[current_key] = " ".join(current_value)
 
                 results = parsed_results
+        elif tool == "colicom":
+            results = colicom.find_records(query)
+            
         elif tool == "hudsonrock":
             results = hudsonrock.hudsonrock(query)
 
@@ -97,4 +100,4 @@ def search():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=80)
+    app.run(debug=False, port=80)

@@ -1,71 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Usage Guide</title>
-    <link rel="stylesheet" href="/static/css/style.css"> 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Usage Guide</title>
+  <style>
+    /* Genel stil ayarları */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #1a1a1a;
+      color: #e0e0e0;
+      line-height: 1.6;
+    }
+    
+    /* Navigasyon Menüsü */
+    nav {
+      background-color: #000;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    nav .logo a {
+      display: flex;
+      align-items: center;
+      color: #e0e0e0;
+      text-decoration: none;
+    }
+    nav .logo img {
+      width: 40px;
+      margin-right: 0.5rem;
+    }
+    nav .nav-links {
+      display: flex;
+      gap: 1rem;
+    }
+    nav .nav-link {
+      color: #e0e0e0;
+      text-decoration: none;
+      padding: 0.5rem 0.75rem;
+      transition: background-color 0.3s;
+    }
+    nav .nav-link:hover,
+    nav .nav-link.active {
+      background-color: #b30000;
+      border-radius: 4px;
+    }
+    
+    .content-page {
+      padding: 2rem;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #262626;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      color: #f0f0f0;
+    }
+    
+    /* FAQ Bölümü */
+    .faq-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .faq-item {
+      background-color: #333;
+      border: 1px solid #444;
+      border-radius: 4px;
+      padding: 1rem;
+    }
+    .faq-item h3 {
+      margin-top: 0;
+      color: #f0f0f0;
+    }
+    .faq-item p,
+    .faq-item strong {
+      margin: 0.5rem 0;
+      color: #d0d0d0;
+    }
+  </style>
 </head>
 <body>
-
-    <nav>
-        <div class="logo">
-            <a href="{{ url_for('home') }}">
-                <img src="{{ url_for('static', filename='images/eye.svg') }}" alt="Zerosint Logo">
-                <span>ZEROSINT</span>
-            </a>
-        </div>
-        <div class="nav-links">
-            <a href="{{ url_for('faq') }}" class="nav-link">FAQ</a>
-            <a href="{{ url_for('about') }}" class="nav-link">Who Are We?</a>
-            <a href="{{ url_for('usage') }}" class="nav-link active">Usage Guide</a>
-        </div>
-    </nav>
-
-    <!-- === Usage Page Content === -->
-    <div class="content-page">
-        <div class="container">
-            <h1>🔍 Usage Guide</h1>
-
-            <div class="faq-section">
-               
-                <div class="faq-item">
-                    <h3>Scam Report</h3>
-                    <p>Check if a website or email is linked to scams.</p>
-                    <strong>Example Input:</strong> URL, email, or phone number  
- 
-                </div>
-
-              
-
-                <div class="faq-item">
-                    <h3>Email Leak Check</h3>
-                    <p>Check if an email has been exposed in data breaches.</p>
-                    <strong>Example Input:</strong> Email address
-                    </pre>
-                </div>
-
-                <div class="faq-item">
-                    <h3>Ransom Report</h3>
-                    <p>Scan databases for ransomware attacks.</p>
-                    <strong>Example Input:</strong> Domain 
-
-                </div>
-
-                <div class="faq-item">
-                    <h3>Hudson Rock Data Breach Check</h3>
-                    <p>Verify if your personal data has been compromised with Grabber,Stealer or etc...</p>
-                    <strong>Example Input:</strong> PC Username
-                </div>
-
-                <div class="faq-item">
-                    <h3>Credit Card Leak Lookup</h3>
-                    <p>Search for creditcards.com data leaks.</p>
-                    <strong>Example Input:</strong> Name 
-                </div>
-            </div>
-        </div>
+  <nav>
+    <div class="logo">
+      <a href="{{ url_for('home') }}">
+        <img src="{{ url_for('static', filename='images/eye.svg') }}" alt="Zerosint Logo">
+        <span>ZEROSINT</span>
+      </a>
     </div>
+    <div class="nav-links">
+      <a href="{{ url_for('faq') }}" class="nav-link">FAQ</a>
+      <a href="{{ url_for('about') }}" class="nav-link">Who Are We?</a>
+      <a href="{{ url_for('usage') }}" class="nav-link active">Usage Guide</a>
+    </div>
+  </nav>
 
+  <!-- Usage Page Content -->
+  <div class="content-page">
+    <div class="container">
+      <h1>Usage Guide</h1>
+      <div class="faq-section">
+        <div class="faq-item">
+          <h3>Scam Report</h3>
+          <p>Check if a website or email is linked to scams.</p>
+          <strong>Example Input:</strong> URL, email, or phone number
+        </div>
+        <div class="faq-item">
+          <h3>Email Leak Check</h3>
+          <p>Check if an email has been exposed in data breaches.</p>
+          <strong>Example Input:</strong> Email address
+        </div>
+        <div class="faq-item">
+          <h3>Ransom Report</h3>
+          <p>Scan databases for ransomware attacks.</p>
+          <strong>Example Input:</strong> Domain
+        </div>
+        <div class="faq-item">
+          <h3>Hudson Rock Data Breach Check</h3>
+          <p>Verify if your personal data has been compromised with Grabber, Stealer, etc.</p>
+          <strong>Example Input:</strong> PC Username
+        </div>
+        <div class="faq-item">
+          <h3>Credit Card Leak Lookup</h3>
+          <p>Search for creditcards.com data leaks.</p>
+          <strong>Example Input:</strong> Name
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

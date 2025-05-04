@@ -1,78 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZEROSINT - Intelligence Platform</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZEROSINT - Intelligence Platform</title>
+  <style>
+    /* Genel Stil Ayarları */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+      line-height: 1.6;
+    }
+    /* Navigasyon Menüsü */
+    nav {
+      background-color: #000;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid #b30000;
+    }
+    nav .logo a {
+      display: flex;
+      align-items: center;
+      color: #e0e0e0;
+      text-decoration: none;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    nav .logo img {
+      width: 40px;
+      margin-right: 0.5rem;
+    }
+    nav .nav-links {
+      display: flex;
+      gap: 1rem;
+    }
+    nav .nav-link {
+      color: #e0e0e0;
+      text-decoration: none;
+      padding: 0.5rem 0.75rem;
+      transition: background-color 0.3s;
+    }
+    nav .nav-link:hover,
+    nav .nav-link.active {
+      background-color: #b30000;
+      border-radius: 4px;
+    }
+    /* Ana İçerik */
+    main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: calc(100vh - 80px);
+      text-align: center;
+      padding: 0 1rem;
+    }
+    .hero {
+      max-width: 800px;
+    }
+    nav .logo a {
+      display: flex;
+      align-items: center;
+      color: #e0e0e0;
+      text-decoration: none;
+    }
+    nav .logo img {
+      width: 40px;
+      margin-right: 0.5rem;
+    }
+    .logo-large {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .logo-large img {
+      width: 100px;
+      margin-bottom: 0.5rem;
+    }
+    .logo-large h1 {
+      font-size: 3rem;
+      margin: 0;
+      color: #b30000;
+    }
+    .subtitle {
+      font-size: 1.5rem;
+      color: #cccccc;
+      margin-bottom: 2rem;
+    }
+    .search-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .search-tool {
+      padding: 0.5rem;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      border: 1px solid #333;
+      border-radius: 4px;
+      background-color: #1c1c1c;
+      color: #ffffff;
+    }
+    .search-form {
+      display: flex;
+      gap: 0.5rem;
+      width: 100%;
+      max-width: 400px;
+    }
+    .search-form input {
+      flex-grow: 1;
+      padding: 0.5rem;
+      font-size: 1rem;
+      border: 1px solid #333;
+      border-radius: 4px;
+      background-color: #1c1c1c;
+      color: #ffffff;
+    }
+    .search-form button {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 4px;
+      background-color: #b30000;
+      color: #ffffff;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .search-form button:hover {
+      background-color: #e60000;
+    }
+  </style>
 </head>
 <body>
-    <nav>
-        <div class="logo">
-            <a href="{{ url_for('home') }}">
-            <img src="{{ url_for('static', filename='images/eye.svg') }}" alt="Zerosint Logo">
-            <span>ZEROSINT</span>
-        </a>
-        </div>
-        <div class="nav-links">
-            <a href="{{ url_for('faq') }}" class="nav-link">FAQ</a>
-            <a href="{{ url_for('about') }}" class="nav-link">Who Are We?</a>
-            <a href="{{ url_for('usage') }}" class="nav-link">Usage Guide</a>
-        </div>
-    </nav>
+  <nav>
+    <div class="logo">
+      <a href="{{ url_for('home') }}">
+        <img src="{{ url_for('static', filename='images/eye.svg') }}" alt="Zerosint Logo">
+        <span>ZEROSINT</span>
+      </a>
+    </div>
+    <div class="nav-links">
+      <a href="{{ url_for('faq') }}" class="nav-link">FAQ</a>
+      <a href="{{ url_for('about') }}" class="nav-link">Who Are We?</a>
+      <a href="{{ url_for('usage') }}" class="nav-link">Usage Guide</a>
+    </div>
+  </nav>
 
-    <main>
-        <div class="hero">
-            <div class="logo-large">
-                <img src="{{ url_for('static', filename='images/eye.svg') }}" alt="Zerosint Large Logo">
-                <h1>ZEROSINT</h1>
-            </div>
-            <p class="subtitle">Advanced Open Source Intelligence Platform</p>
-            
-            <div class="search-container">
-                <select id="searchTool" class="search-tool">
-                    <option value="scam">Scam Report</option>
-                    <option value="email">Email Leaked?</option>
-                    <option value="ransom">Ransom Report</option>
-                    <option value="hudsonrock">Is Your Info Stealed?</option>
-                    <option value="creditcard">Creditcards.com Leakdata Lookup</option>
-                </select>
-                <form id="searchForm" class="search-form">
-                    <input type="text" id="searchQuery" placeholder="Enter your search query...">
-                    <button type="submit" class="search-button">Search</button>
-                </form>
-            </div>
-
-        </div>
-    </main>
-    <script>
-        document.getElementById("searchForm").addEventListener("submit", function(event) {
-            event.preventDefault();  
-
-            var searchQuery = document.getElementById("searchQuery").value;
-            var searchTool = document.getElementById("searchTool").value;
-
-            
-            var data = {
-                query: searchQuery,
-                tool: searchTool
-            };
-
-            // Send the POST request with the JSON data
-            fetch('/search', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => response.text())  // Parse the response as text (HTML)
-            .then(html => {
-                // Update the page with the response
-                document.body.innerHTML = html;
-            })
-            .catch(error => console.error('Error:', error));
-        });
-    </script>
+  <main>
+    <div class="hero">
+      <div class="logo-large">
+        <img src="{{ url_for('static', filename='images/eye.svg') }}" alt="Zerosint Large Logo">
+        <h1>ZEROSINT</h1>
+      </div>
+      <p class="subtitle">Advanced Open Source Intelligence Platform</p>
+      <div class="search-container">
+        <select id="searchTool" class="search-tool">
+          <option value="scam">Scam Report</option>
+          <option value="email">Leaked Emails</option>
+          <option value="ransom">Ransom Report</option>
+          <option value="hudsonrock">Grabber datas</option>
+          <option value="creditcard">Creditcards.com Leakdata Lookup</option>
+          <option value="colicom">Colicom Leakdata Lookup</option>
+        </select>
+        <form id="searchForm" class="search-form">
+          <input type="text" id="searchQuery" placeholder="Enter your search query...">
+          <button type="submit" class="search-button">Search</button>
+        </form>
+      </div>
+    </div>
+  </main>
+  <script>
+    document.getElementById("searchForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      var searchQuery = document.getElementById("searchQuery").value;
+      var searchTool = document.getElementById("searchTool").value;
+      var data = { query: searchQuery, tool: searchTool };
+      fetch('/search', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      })
+      .then(response => response.text())
+      .then(html => { document.body.innerHTML = html; })
+      .catch(error => console.error('Error:', error));
+    });
+  </script>
 </body>
 </html>
